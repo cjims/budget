@@ -1,0 +1,425 @@
+/* App.css - 最終整合版 (基於您的樣式 + 修正後的總計樣式) */
+
+body {
+    margin: 0;
+    font-family: "Noto Sans TC", sans-serif;
+    background-color: #f8fafc;
+    color: #333;
+    /* 確保 body 佔滿整個視口高度 */
+    min-height: 100vh; 
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    /* 讓容器可以隨著內容增長，但至少佔滿視口 */
+    min-height: 100vh;
+}
+
+.left-panel {
+    flex: 1.2;
+    padding: 40px;
+    border-right: 2px solid #e0e0e0;
+    background-color: #fefefe;
+}
+
+.left-panel h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.date-picker {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.date-field {
+  display: flex;         
+  align-items: center;     
+  gap: 10px;              
+  flex: 1;
+}
+.date-field:first-child {
+  padding-right: 20px;
+  border-right: 2px solid #ddd;  /* 中間的線 */
+}
+
+.date-field:last-child {
+  padding-left: 20px;
+}
+
+.date-field label {
+  white-space: nowrap;
+  font-weight: 500;
+  min-width: 60px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box; /* 確保 padding 不會增加寬度 */
+}
+
+input[readonly] {
+    background-color: #e9ecef; /* 淺灰色背景 */
+    border: 1px solid #ced4da; /* 稍微深色的邊框 */
+    cursor: not-allowed; /* 顯示禁止點擊的游標 */
+    color: #6c757d; /* 讓文字顏色變淡 */
+}
+
+.add-btn {
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+}
+
+.add-btn:hover {
+    background-color: #43a047;
+}
+
+.members {
+    font-size: 18px;
+}
+
+.member-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 新增成員輸入 */
+.add-member {
+    margin-top: 25px;
+}
+
+.add-member input {
+    width: 100%;
+    padding: 12px;
+    border: 1px dashed #bbb;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.right-panel {
+    flex: 1.5;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: #fafafa;
+}
+
+.right-panel h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    font-size: 18px;
+}
+
+.record {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.record-header {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.record-header strong {
+    flex-grow: 1;
+    margin-right: auto; 
+}
+
+.record-header span {
+    white-space: nowrap; 
+    font-weight: bold;
+    color: #0d47a1;
+}
+
+
+.member-status {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 已轉帳按鈕 - 綠色 */
+button.paid {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+button.unpaid {
+    background-color: #bbdefb; /* 淺藍色 */
+    color: #0d47a1; /* 深藍色 */
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 🎯 刪除按鈕樣式 */
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+    line-height: 1;
+    margin-left: 0; 
+}
+
+.delete-btn:hover {
+    opacity: 1;
+    color: #f44336; /* 紅色 */
+}
+
+/* 🎯 歷史歸檔開關按鈕 */
+.archive-toggle-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    background-color: #689f38; /* 深黃綠色/橄欖綠 */
+    color: white; /* 確保文字是白色 */
+    border: 1px solid #cddc39;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.archive-toggle-btn:hover {
+    background-color: #558b2f;
+}
+
+/* 🎯 歷史歸檔區塊樣式 */
+.archive-section {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+.archive-section h3 {
+    color: #555;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.archive-section h4 {
+    color: #777;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.archived-record {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background-color: #f9f9f9; /* 淺灰色背景 */
+    box-shadow: none;
+    border-left: 5px solid #cddc39; /* 歸檔標記 */
+}
+
+.archived-record .record-header {
+    gap: 10px;
+    justify-content: flex-start;
+}
+.archived-record .record-header strong {
+    flex-grow: 0; 
+    margin-right: 15px;
+}
+.archived-record .record-header span {
+    color: #4caf50;
+}
+
+
+/* 左側列表容器樣式 */
+.unarchived-weeks-list {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.unarchived-weeks-list h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+}
+
+.unarchived-weeks-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.unarchived-weeks-list li {
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+.unarchived-weeks-list li:hover {
+    background-color: #e0f7fa; /* 淺藍色 */
+}
+
+/* 點擊中的週次高亮顯示 */
+.unarchived-weeks-list li.active-week {
+    background-color: #00bcd4; /* 深一點的藍色 */
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* -------------------------------------- */
+/* 🎯 個人總計區塊樣式 (最終版 - 淨投入/欠款) */
+/* -------------------------------------- */
+
+.summary-section {
+    padding: 20px;
+    margin-bottom: 25px;
+    background-color: #ffffff; 
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #e0e0e0;
+}
+
+.summary-section h3 {
+    text-align: center;
+    color: #1976d2; 
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e3f2fd; 
+}
+
+.member-totals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center; 
+}
+
+.member-total {
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    min-width: 140px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 增加陰影 */
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 600; /* 加粗文字 */
+}
+
+.member-total:hover {
+    transform: translateY(-3px); /* 讓 hover 效果更明顯 */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.member-total strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.member-total span {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+/* 顏色定義 - 應付出 / 淨欠款 (owes) - 欠款人 (高對比紅色系) */
+.owes {
+    background-color: #ffebee; /* 淺粉色 */
+    color: #c62828; /* 鮮豔的深紅色文字 */
+    border: 2px solid #ef5350; /* 紅色邊框 */
+}
+
+/* 顏色定義 - 應收回 / 淨投入 (receives) - 買家 (高對比藍色系) */
+.receives {
+    background-color: #e3f2fd; /* 淺藍色 */
+    color: #1565c0; /* 鮮豔的深藍色文字 */
+    border: 2px solid #42a5f5; /* 藍色邊框 */
+}
+
+.note {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #ccc;
+    text-align: center;
+}
+
+/* 🎯 每週負責人顯示區塊 */
+.header-row {
+  display: flex;
+  justify-content: space-between; /* 左右分開 */
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header-row h1 {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.weekly-leader {
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+}
